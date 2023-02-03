@@ -1,5 +1,5 @@
-const service = require("../src/services/companyServices");
-const controller = require("../src/controllers/companyController");
+const service = require("../../src/services/companyServices");
+const controller = require("../../src/controllers/companyController");
 
 describe("postDetails", ()=>{
     it("should add data and return json and 201 status code when request body is valid", async ()=>{

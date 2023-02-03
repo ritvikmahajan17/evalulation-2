@@ -166,7 +166,7 @@ const postService = async (url) => {
 
     //const compandy
 
-    //await company.bulkCreate(companyDetails);
+    await company.bulkCreate(companyDetails);
 
     const finalRes = [];
 
