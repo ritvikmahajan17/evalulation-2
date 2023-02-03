@@ -19,6 +19,43 @@ const postDetails = async (req, res) => {
     }
 };
 
+const getBySector = async (req, res) => {
+    try{
+        const {sector} = req.query;
+        console.log(typeof(sector));
+        const task = await services.getByIdService(sector);
+        res.status(200).json(task);
+    }
+    catch (error) {
+        if (error instanceof HTTPError) {
+            res.status(error.code).json({ message: error.message });
+        }
+        else{
+            res.status(500).json({"message":error.message});
+        }
+    }
+};
+
+const updateCompany = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const task = await services.updateService(id,req.body);
+        res.status(201).json(task);
+    }
+    catch (error) {
+        if (error instanceof HTTPError) {
+            res.status(error.code).json({ message: error.message });
+        }
+        else{
+            res.status(500).json({"message":error.message});
+        }
+    }
+};
+
+
+
 module.exports = {
-    postDetails
+    postDetails,
+    getBySector,
+    updateCompany
 };
