@@ -5,7 +5,6 @@ const { compy } = require("../../database/models");
 
 const postService = async (url) => {
 
-
     const response = await axios.get(url, { responseType: "json", });
     const file = response.data;
     const jsonData = utils.csvJSON(file);
@@ -48,7 +47,6 @@ const postService = async (url) => {
         });
     }
 
-
     for (let val = 0; val < companyDetails.length; val++) {
         const id = companyDetails[val].id;
         companyDetails[val]["companyId"] = companyDetails[val].id;
@@ -63,13 +61,9 @@ const postService = async (url) => {
         }
     }
 
-    console.log(companyDetails);
-
     await compy.bulkCreate(companyDetails);
 
-
     const finalRes = [];
-
     for (let it = 0; it < companyDetails.length; it++) {
         const obj = {};
 
@@ -82,16 +76,23 @@ const postService = async (url) => {
     return finalRes;
 };
 
-const getByIdService = async (sector)=> {
-    return await compy.findAll({
+const getBySectorService = async (sector)=> {
+    const result =  await compy.findAll({
         where: {
             sector: sector
         }, 
-        
         order: [
             ["score", "DESC"],
         ]
     });
+
+    let rank = 1;
+
+    result.forEach(item=>{
+        item.dataValues["ranking"]=rank;
+        rank++;
+    });
+    return result;
 };
 
 const updateService = async(id,toBeUpdatedBody) => {
@@ -105,6 +106,6 @@ const updateService = async(id,toBeUpdatedBody) => {
 
 module.exports = {
     postService,
-    getByIdService,
+    getBySectorService,
     updateService
 };
