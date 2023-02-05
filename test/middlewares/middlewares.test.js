@@ -25,7 +25,6 @@ describe("getBySectorValidator", () => {
         const mockBody = {
             sector: 1,
         };
-        
         const mockReq = {
             query: mockBody,
         };
