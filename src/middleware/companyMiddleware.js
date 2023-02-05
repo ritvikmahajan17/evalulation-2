@@ -4,6 +4,14 @@ const postSchema = Joi.object({
     urlLink: Joi.string().required()
 });
 
+const getBySectorSchema = Joi.object({
+    sector: Joi.string().required()
+});
+
+const updateByIdSchema = Joi.object({
+    id: Joi.number().integer()
+});
+
 const postDetailsValidator = (req, res, next) => {
     const { error } = postSchema.validate(req.body);
     if (error) {
@@ -12,6 +20,24 @@ const postDetailsValidator = (req, res, next) => {
     next();
 };
 
+const getBySectorValidator = (req, res, next) => {
+    const { error } = getBySectorSchema.validate(req.query);
+    if (error) {
+        return res.status(400).json({ "message": error.message });
+    }
+    next();
+};
+
+const updateByIdValidator = (req, res, next) => {
+    const { error } = updateByIdSchema.validate(req.params);
+    if (error) {
+        return res.status(400).json({ "message": error.message });
+    }
+    next();
+};
+
 module.exports = {
-    postDetailsValidator
+    postDetailsValidator,
+    getBySectorValidator,
+    updateByIdValidator
 };

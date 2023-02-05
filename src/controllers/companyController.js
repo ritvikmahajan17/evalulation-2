@@ -23,7 +23,7 @@ const getBySector = async (req, res) => {
     try{
         const {sector} = req.query;
         console.log(typeof(sector));
-        const task = await services.getByIdService(sector);
+        const task = await services.getBySectorService(sector);
         res.status(200).json(task);
     }
     catch (error) {
