@@ -5,6 +5,9 @@ const { compy } = require("../../database/models");
 const postService = async (url) => {
 
     const companyDetails = await utils.getDetails(url);
+    if(companyDetails.length===0){
+        return undefined;
+    }
     await compy.bulkCreate(companyDetails);
 
     const finalRes = [];

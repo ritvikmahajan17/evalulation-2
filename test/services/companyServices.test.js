@@ -31,6 +31,19 @@ describe("postService", () => {
         expect(spiedGetDetails).toBeCalled();
         expect(returedVal).toEqual(mockValues);
     });
+    it("should return undefined when body is invalid", async () => {
+    
+
+        // const spiedBulkCreate = jest.spyOn(compy, "bulkCreate")
+        //     .mockResolvedValue(mockValues);
+
+        const spiedGetDetails = jest.spyOn(utils, "getDetails")
+            .mockResolvedValue([]);
+
+        const returedVal = await services.postService();
+        expect(spiedGetDetails).toBeCalled();
+        expect(returedVal).toEqual(undefined);
+    });
 });
 
 describe("getBySectorService", () => {

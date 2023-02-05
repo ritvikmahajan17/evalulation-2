@@ -1,21 +1,18 @@
+
 const services = require("../services/companyServices");
 const {HTTPError} = require("../Utils/error");
-
-
 
 const postDetails = async (req, res) => {
     try{
         const {urlLink} = req.body;
-        const task = await services.postService(urlLink);
-        res.status(201).json(task);
+        const companies = await services.postService(urlLink);
+        if(companies===undefined){
+            throw new Error();
+        }
+        res.status(201).json(companies);
     }
     catch (error) {
-        if (error instanceof HTTPError) {
-            res.status(error.code).json({ message: error.message });
-        }
-        else{
-            res.status(500).json({"message":error.message});
-        }
+        res.status(500).json({"message":"internal server error"});
     }
 };
 
@@ -33,7 +30,7 @@ const getBySector = async (req, res) => {
             res.status(error.code).json({ message: error.message });
         }
         else{
-            res.status(500).json({"message":error.message});
+            res.status(500).json({"message":"internal server error"});
         }
     }
 };
@@ -45,6 +42,7 @@ const updateCompany = async (req, res) => {
         if(!company){
             throw new HTTPError("no such id",404);
         }
+        if(typeof(company)!=="object") throw Error();
         res.status(201).json(company);
     }
     catch (error) {
@@ -52,7 +50,7 @@ const updateCompany = async (req, res) => {
             res.status(error.code).json({ message: error.message });
         }
         else{
-            res.status(500).json({"message":error.message});
+            res.status(500).json({"message":"internal server error"});
         }
     }
 };

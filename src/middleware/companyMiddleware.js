@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const postSchema = Joi.object({
-    urlLink: Joi.string().required()
+    urlLink: Joi.string().uri().required()
 });
 
 const getBySectorSchema = Joi.object({
@@ -39,5 +39,8 @@ const updateByIdValidator = (req, res, next) => {
 module.exports = {
     postDetailsValidator,
     getBySectorValidator,
-    updateByIdValidator
+    updateByIdValidator,
+    postSchema,
+    getBySectorSchema,
+    updateByIdSchema
 };

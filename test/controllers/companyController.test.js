@@ -27,6 +27,23 @@ describe("postDetails", ()=>{
         expect(mockRes.status).toBeCalledWith(201);
         expect(mockRes.json).toBeCalledWith(mockValue);
     });
+    it("should throw 500 error when body is invalid", async ()=>{
+        
+        jest.spyOn(service,"postService").mockResolvedValue(undefined);
+
+        const  mockRes = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn()
+        };
+        const mockReq ={
+            "body":{
+                "urlLink": "https://store-00.s3.amazonaws.com/input.csv"
+            }
+        };
+        await controller.postDetails(mockReq,mockRes);
+        expect(mockRes.status).toBeCalledWith(500);
+        expect(mockRes.json).toBeCalledWith({"message":"internal server error"});
+    });
 });
 
 describe("getBySector", ()=>{
@@ -63,7 +80,7 @@ describe("getBySector", ()=>{
         expect(mockRes.status).toBeCalledWith(200);
         expect(mockRes.json).toBeCalledWith(mockValue);
     });
-    it("should return status code 404 with message - no such sector", async ()=>{
+    it("should throw status code 404 error with message - no such sector", async ()=>{
         
         jest.spyOn(service,"getBySectorService").mockResolvedValue([]);
 
@@ -82,6 +99,28 @@ describe("getBySector", ()=>{
         expect(mockRes.status).toBeCalledWith(404);
         expect(mockRes.json).toBeCalledWith({
             "message": "No such sector"
+        });
+    });
+
+    it("should throw status code 500 error", async ()=>{
+        
+        jest.spyOn(service,"getBySectorService").mockResolvedValue(null);
+
+        const  mockRes = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn()
+        };
+
+        const  mockReq = {
+            query: {
+                sector: "abc"
+            }
+        };
+        
+        await controller.getBySector(mockReq,mockRes);
+        expect(mockRes.status).toBeCalledWith(500);
+        expect(mockRes.json).toBeCalledWith({
+            "message": "internal server error"
         });
     });
 });
@@ -139,6 +178,27 @@ describe("updateBySector", ()=>{
         expect(mockRes.status).toBeCalledWith(404);
         expect(mockRes.json).toBeCalledWith({
             "message": "no such id"
+        });
+    });
+    it("should throw status code 500 error ", async ()=>{
+        
+        jest.spyOn(service,"updateService").mockResolvedValue(123);
+
+        const  mockRes = {
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn()
+        };
+
+        const  mockReq = {
+            params: {
+                id: "abc"
+            }
+        };
+        
+        await controller.updateCompany(mockReq,mockRes);
+        expect(mockRes.status).toBeCalledWith(500);
+        expect(mockRes.json).toBeCalledWith({
+            "message": "internal server error"
         });
     });
 });
