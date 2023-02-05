@@ -19,15 +19,15 @@ const csvJSON = (csv) => {
         result.push(obj);
   
     }
-  
-    //return result; //JavaScript object
-    return result; //JSON
+    
+    return result;
 };
 
 const getDetails = async (url) => {
 
-    const response = await axios.get(url, { responseType: "json", });
+    const response = await axios.get(url);
     const file = response.data;
+    console.log(typeof(file),file);
     const jsonData = csvJSON(file);
 
     let companyScore = [];

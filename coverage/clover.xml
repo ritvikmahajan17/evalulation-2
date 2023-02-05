@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675624879701" clover="3.2.0">
-  <project timestamp="1675624879701" name="All files">
-    <metrics statements="166" coveredstatements="118" conditionals="44" coveredconditionals="29" methods="23" coveredmethods="18" elements="233" coveredelements="165" complexity="0" loc="166" ncloc="166" packages="5" files="7" classes="7"/>
+<coverage generated="1675626183670" clover="3.2.0">
+  <project timestamp="1675626183670" name="All files">
+    <metrics statements="166" coveredstatements="128" conditionals="44" coveredconditionals="29" methods="23" coveredmethods="19" elements="233" coveredelements="176" complexity="0" loc="166" ncloc="166" packages="5" files="7" classes="7"/>
     <package name="database.models">
       <metrics statements="25" coveredstatements="24" conditionals="10" coveredconditionals="7" methods="5" coveredmethods="5"/>
       <file name="compy.js" path="/Users/ritvik_mahajan/Documents/eval-2/database/models/compy.js">
@@ -37,7 +37,7 @@
       </file>
     </package>
     <package name="src.Utils">
-      <metrics statements="58" coveredstatements="11" conditionals="12" coveredconditionals="0" methods="8" coveredmethods="3"/>
+      <metrics statements="58" coveredstatements="21" conditionals="12" coveredconditionals="0" methods="8" coveredmethods="4"/>
       <file name="error.js" path="/Users/ritvik_mahajan/Documents/eval-2/src/Utils/error.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="3" count="2" type="stmt"/>
@@ -46,20 +46,20 @@
         <line num="9" count="1" type="stmt"/>
       </file>
       <file name="utils.js" path="/Users/ritvik_mahajan/Documents/eval-2/src/Utils/utils.js">
-        <metrics statements="54" coveredstatements="7" conditionals="12" coveredconditionals="0" methods="7" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
+        <metrics statements="54" coveredstatements="17" conditionals="12" coveredconditionals="0" methods="7" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
@@ -97,10 +97,10 @@
         <line num="79" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="80" count="0" type="stmt"/>
         <line num="85" count="0" type="stmt"/>
-        <line num="88" count="2" type="stmt"/>
-        <line num="89" count="1" type="stmt"/>
-        <line num="90" count="11" type="stmt"/>
-        <line num="94" count="2" type="stmt"/>
+        <line num="88" count="3" type="stmt"/>
+        <line num="89" count="2" type="stmt"/>
+        <line num="90" count="13" type="stmt"/>
+        <line num="94" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.controllers">
