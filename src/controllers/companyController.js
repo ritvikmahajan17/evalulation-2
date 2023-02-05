@@ -23,8 +23,11 @@ const getBySector = async (req, res) => {
     try{
         const {sector} = req.query;
         console.log(typeof(sector));
-        const task = await services.getBySectorService(sector);
-        res.status(200).json(task);
+        const result = await services.getBySectorService(sector);
+        if(!result){
+            throw new HTTPError();
+        }
+        res.status(200).json(result);
     }
     catch (error) {
         if (error instanceof HTTPError) {

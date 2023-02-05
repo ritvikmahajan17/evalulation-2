@@ -9,7 +9,7 @@ const getBySectorSchema = Joi.object({
 });
 
 const updateByIdSchema = Joi.object({
-    id: Joi.number().integer()
+    id: Joi.string()
 });
 
 const postDetailsValidator = (req, res, next) => {
