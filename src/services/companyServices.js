@@ -17,8 +17,6 @@ const postService = async (url) => {
         finalRes.push(obj);
     }
 
-    console.log("res => ",finalRes);
-
     return finalRes;
 };
 
@@ -43,6 +41,9 @@ const getBySectorService = async (sector)=> {
 
 const updateService = async(id,toBeUpdatedBody) => {
     let company = await compy.findOne({ where: { companyId: id } });
+    if(!company){
+        return null;
+    }
     utils.JSONUpdate(toBeUpdatedBody,company);
     await company.save();
     return company;

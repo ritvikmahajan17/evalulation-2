@@ -22,10 +22,9 @@ const postDetails = async (req, res) => {
 const getBySector = async (req, res) => {
     try{
         const {sector} = req.query;
-        console.log(typeof(sector));
         const result = await services.getBySectorService(sector);
-        if(!result){
-            throw new HTTPError();
+        if(result.length===0){
+            throw new HTTPError("No such sector",404);
         }
         res.status(200).json(result);
     }
@@ -42,8 +41,11 @@ const getBySector = async (req, res) => {
 const updateCompany = async (req, res) => {
     try{
         const {id} = req.params;
-        const task = await services.updateService(id,req.body);
-        res.status(201).json(task);
+        const company = await services.updateService(id,req.body);
+        if(!company){
+            throw new HTTPError("no such id",404);
+        }
+        res.status(201).json(company);
     }
     catch (error) {
         if (error instanceof HTTPError) {
@@ -54,8 +56,6 @@ const updateCompany = async (req, res) => {
         }
     }
 };
-
-
 
 module.exports = {
     postDetails,
